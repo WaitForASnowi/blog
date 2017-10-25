@@ -25,7 +25,7 @@
 			<div class="form-group">
 				<label class="col-sm-5 control-label">密码</label>
 				<div class="col-sm-2">
-					<input class="form-control" type="password" name="password" value="${requestScope.password }"/> 
+					<input class="form-control" type="password" name="password"/> 
 				</div>
 			</div>
 			<div class="form-group">

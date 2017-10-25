@@ -9,10 +9,10 @@ import pri.shen.daily.exception.TypeNotMatchException;
 
 public class ValidUtil {
 	public static User validUser(String usernameParam,String passwordParam) throws NullParamException, TypeNotMatchException {
-		if(usernameParam==null) {
+		if(usernameParam==null||usernameParam.equals("")) {
 			throw new NullParamException("用户名不能为空");
 		}
-		if(passwordParam==null) {
+		if(passwordParam==null||passwordParam.equals("")) {
 			throw new NullParamException("密码不能为空");
 		}
 		if(!Pattern.matches(Constant.USERNAME_REGEX, usernameParam)) {

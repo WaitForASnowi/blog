@@ -28,13 +28,17 @@ public class LoginServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session=req.getSession();
+		session.removeAttribute("identity");
 		String usernameParam=req.getParameter("username");
 		String passwordParam=req.getParameter("password");
 		try {
 			User user=userService.login(usernameParam, passwordParam);
-		    HttpSession session=req.getSession();
+		    
 		    session.setAttribute("username", user.getUsername());
 		    session.setAttribute("identity", user.getIdentity());
+		    resp.sendRedirect(req.getContextPath()+"/articles");
+		    return;
 		} catch (NullParamException | TypeNotMatchException | LoginException e) {
 			req.setAttribute("result", new Result<>(false, e.getMessage()));
 		} catch (SQLException e) {
@@ -43,8 +47,8 @@ public class LoginServlet extends HttpServlet {
 		
 		req.setAttribute("username", usernameParam);
 		req.setAttribute("password", passwordParam);
+		req.getRequestDispatcher("/login.jsp").forward(req, resp);
 		
-		resp.sendRedirect(req.getContextPath()+"/articles");
 	}
 
 	@Override

@@ -36,7 +36,7 @@
 <div style="margin-top:100px;margin-left:400px;margin-right:400px;">
 	<c:if test="${sessionScope.identity eq 1 }">
 		<div class="text-right" style="margin-bottom:20px">
-		<a class="btn btn-default" href="<%=path%>/jsp/new.jsp">发表新文章</a>
+		<a href="<%=path%>/jsp/new.jsp"><button class="btn btn-default">发表新文章</button></a>
 		</div>
 	</c:if>
 	<table class="table table-hover text-center">
